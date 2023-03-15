@@ -4,4 +4,10 @@
     <string name="nombre">Nombre</string>
     <string name="apellido">Apellidos</string>
     <string name="sexo">Sexo</string>
+    <string name="required">*required</string>
+    <string name="email_hint">Email*</string>
+    <string name="phone_hint">Phone*</string>
+    <string name="city">City</string>
+    <string name="address">Address</string>
+    <string name="country">Country*</string>
 </resources>
