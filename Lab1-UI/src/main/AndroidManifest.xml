@@ -15,7 +15,7 @@
         <activity
             android:name=".ContactDataActivity"
             android:parentActivityName=".MainActivity"
-            android:label="Contact Data"
+            android:label="@string/contact_information"
             android:exported="false"
             android:windowSoftInputMode="adjustPan"
             />

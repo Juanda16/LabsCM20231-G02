@@ -1,5 +1,6 @@
 package co.edu.udea.compumovil.gr02_20231.lab1
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -63,18 +64,19 @@ class ContactDataActivity : AppCompatActivity() {
         }
         */
 
-
-        var message = "Phone: ${binding.phoneEditText.text}"
-        message += "\nEmail: ${binding.emailEditText.text}"
-        message += "\nCountry: ${binding.countryEditText.text}"
+        var message = "${getString(R.string.phone)}: ${binding.phoneEditText.text}"
+        message += "\n${getString(R.string.email)}: ${binding.emailEditText.text}"
+        message += "\n${getString(R.string.country)}: ${binding.countryEditText.text}"
         if (binding.cityEditText.text.isNotEmpty())
-            message += "\nCity: ${binding.cityEditText.text}"
+            message += "\n${getString(R.string.city)}: ${binding.cityEditText.text}"
         if (binding.addressEditText.text?.isNotEmpty() == true)
-            message += "\nAddress: ${binding.addressEditText.text}"
+            message += "\n${getString(R.string.address)}: ${binding.addressEditText.text}"
+
+
         AlertDialog.Builder(this)
-            .setTitle("Form Submitted")
+            .setTitle(getString(R.string.form_submitted))
             .setMessage(message)
-            .setPositiveButton("Okay") { _, _ ->
+            .setPositiveButton(getString(R.string.okay)) { _, _ ->
                 binding.phoneEditText.text?.clear()
                 binding.emailEditText.text?.clear()
                 binding.countryEditText.text?.clear()
@@ -91,6 +93,7 @@ class ContactDataActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun showLog() {
 /*
         Log.d("personInfo", "Personal information:")
@@ -100,32 +103,36 @@ class ContactDataActivity : AppCompatActivity() {
         Log.d("personInfo", "School level: ${binding.schoolLevelEditText.text}")
 
 */
-        Log.d("contactInfo", "Contact information:")
-        Log.d("contactInfo", "Phone: ${binding.phoneEditText.text}")
-        Log.d("contactInfo", "Email: ${binding.emailEditText.text}")
-        Log.d("contactInfo", "Country: ${binding.countryEditText.text}")
-        if (binding.cityEditText.text.isNotEmpty())
-            Log.d("contactInfo", "${R.string.city}: ${binding.cityEditText.text}")
-        if (binding.addressEditText.text?.isNotEmpty() == true)
-            Log.d("contactInfo", "Address: ${binding.addressEditText.text}")
+
+        Log.d("contactInfo", "${getString(R.string.contact_information)}:")
+        Log.d("contactInfo", "${getString(R.string.phone)}: ${binding.phoneEditText.text}")
+        Log.d("contactInfo", "${getString(R.string.email)}: ${binding.emailEditText.text}")
+        Log.d("contactInfo", "${getString(R.string.country)}: ${binding.countryEditText.text}")
+        if (binding.cityEditText.text.isNotEmpty()) {
+            Log.d("contactInfo", "${getString(R.string.city)}: ${binding.cityEditText.text}")
+        }
+        if (binding.addressEditText.text?.isNotEmpty() == true) {
+            Log.d("contactInfo", "${getString(R.string.address)}: ${binding.addressEditText.text}")
+        }
+
     }
 
 
     private fun invalidForm() {
         var message = ""
         if (binding.phoneContainer.helperText != null) {
-            message += "Phone: ${binding.phoneContainer.helperText}"
+            message += "${R.string.phone}: ${binding.phoneContainer.helperText}"
         }
         if (binding.emailContainer.helperText != null) {
-            message += "\nEmail: ${binding.emailContainer.helperText}"
+            message += "\n${R.string.email}: ${binding.emailContainer.helperText}"
         }
         if (binding.countryContainer.helperText != null) {
-            message += "\nCountry: ${binding.countryContainer.helperText}"
+            message += "\n${R.string.country}: ${binding.countryContainer.helperText}"
         }
         AlertDialog.Builder(this)
-            .setTitle("Invalid Form")
+            .setTitle(getString(R.string.invalid_form))
             .setMessage(message)
-            .setPositiveButton("Okay") { _, _ ->
+            .setPositiveButton(getString(R.string.okay)) { _, _ ->
                 // do nothing
             }
             .show()
@@ -140,11 +147,11 @@ class ContactDataActivity : AppCompatActivity() {
             return getString(R.string.required)
         }
         if (!phoneText.matches(".*[0-9].*".toRegex())) {
-            return "Must be all Digits"
+            return getString(R.string.must_be_a_number)
         }
         //bettwen 4 and 12 digits
         if (phoneText.length < 4 || phoneText.length > 12) {
-            return "Must be between 4 and 12 digits"
+            return getString(R.string.must_be_between_4_and_12_digits)
         }
         return null
     }
@@ -163,7 +170,7 @@ class ContactDataActivity : AppCompatActivity() {
             return getString(R.string.required)
         }
         if (!emailText.matches(".*@.*".toRegex())) {
-            return "Must be a valid email"
+            return getString(R.string.must_be_a_valid_email)
         }
         return null
     }
