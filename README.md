@@ -9,5 +9,5 @@ Laboratorio 1 · Computación Móvil · UdeA
 
 ## Screenshots
 
-|![contact-data-1](screenshoots/contact-data-1.jpeg)|![contact-data-2](screenshoots/contact-data-2.jpeg)|
+|![contact-data-1](screenshots/contact-data-1.jpeg)|![contact-data-2](screenshots/contact-data-2.jpeg)|
 |---|---|
