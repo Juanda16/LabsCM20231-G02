@@ -4,4 +4,19 @@
     <string name="nombre">Nombre</string>
     <string name="apellido">Apellidos</string>
     <string name="sexo">Sexo</string>
+    <string name="hombre">Hombre</string>
+    <string name="mujer">Mujer</string>
+    <string name="fecha">Fecha de nacimiento</string>
+    <string name="cambiar_fecha">Cambiar</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="info_fecha">Info</string>
+    <string name="grado_escolaridad">Grado de escolaridad</string>
+
+    <string-array name="school_grade">
+        <item>Primaria</item>
+        <item>Secundaria</item>
+        <item>Universitario</item>
+        <item>Otro</item>
+    </string-array>
+
 </resources>
