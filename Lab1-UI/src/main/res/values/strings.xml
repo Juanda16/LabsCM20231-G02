@@ -11,6 +11,7 @@
     <string name="placeholder">Placeholder</string>
     <string name="info_fecha">Info</string>
     <string name="grado_escolaridad">Grado de escolaridad</string>
+    <string name="siguiente">Siguiente</string>
 
     <string-array name="school_grade">
         <item>Primaria</item>

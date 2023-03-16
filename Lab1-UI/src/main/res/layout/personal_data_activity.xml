@@ -3,168 +3,120 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/general_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="@string/inf_personal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <EditText
         android:id="@+id/Name"
-        android:layout_width="213dp"
-        android:layout_height="71dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="231dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="84dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/nombre"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toEndOf="@+id/namePic"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/LastName"
-        android:layout_width="214dp"
-        android:layout_height="69dp"
+        android:layout_width="233dp"
+        android:layout_height="80dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/apellido"
+        app:layout_constraintBottom_toBottomOf="@+id/lastNPic"
         app:layout_constraintStart_toEndOf="@+id/lastNPic"
-        app:layout_constraintTop_toBottomOf="@+id/Name" />
+        app:layout_constraintTop_toTopOf="@+id/lastNPic" />
 
     <TextView
         android:id="@+id/sexText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="32dp"
         android:text="@string/sexo"
-        app:layout_constraintStart_toEndOf="@+id/sexoPic"
-        app:layout_constraintTop_toBottomOf="@+id/LastName" />
+        app:layout_constraintBottom_toBottomOf="@+id/sexPic"
+        app:layout_constraintStart_toEndOf="@+id/sexPic"
+        app:layout_constraintTop_toTopOf="@+id/sexPic" />
 
     <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="36dp"
-        android:text="@string/mujer"
-        app:layout_constraintStart_toEndOf="@+id/sexText"
-        app:layout_constraintTop_toBottomOf="@+id/LastName" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
+        android:id="@+id/radioButtonW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
-        android:text="@string/hombre"
-        app:layout_constraintStart_toEndOf="@+id/radioButton"
-        app:layout_constraintTop_toBottomOf="@+id/LastName" />
+        android:layout_marginEnd="40dp"
+        android:text="@string/mujer"
+        app:layout_constraintBottom_toBottomOf="@+id/radioButtonM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/radioButtonM"
+        app:layout_constraintTop_toTopOf="@+id/radioButtonM" />
 
-    <ImageView
-        android:id="@+id/namePic"
-        android:layout_width="41dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="28dp"
-        android:contentDescription="@string/placeholder"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/general_title"
-        app:srcCompat="@drawable/persona" />
-
-    <ImageView
-        android:id="@+id/lastNPic"
-        android:layout_width="42dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="80dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/placeholder"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/namePic"
-        app:srcCompat="@drawable/persona_mas" />
-
-    <ImageView
-        android:id="@+id/sexoPic"
-        android:layout_width="56dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="32dp"
-        android:contentDescription="@string/placeholder"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastNPic"
-        app:srcCompat="@drawable/personas" />
-
-    <ImageView
-        android:id="@+id/calendarPic"
-        android:layout_width="48dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="52dp"
-        android:contentDescription="@string/placeholder"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sexoPic"
-        app:srcCompat="@drawable/calendario" />
-
-    <TextView
-        android:id="@+id/fechatext"
+    <RadioButton
+        android:id="@+id/radioButtonM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="24dp"
+        android:text="@string/hombre"
+        app:layout_constraintBottom_toBottomOf="@+id/sexPic"
+        app:layout_constraintStart_toEndOf="@+id/sexText"
+        app:layout_constraintTop_toTopOf="@+id/sexPic" />
+
+    <TextView
+        android:id="@+id/daleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/placeholder"
         android:text="@string/fecha"
         app:layout_constraintStart_toEndOf="@+id/calendarPic"
-        app:layout_constraintTop_toBottomOf="@+id/sexText" />
+        app:layout_constraintTop_toTopOf="@+id/calendarPic" />
 
     <EditText
         android:id="@+id/datePlace"
         android:layout_width="246dp"
         android:layout_height="58dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="44dp"
         android:ems="10"
         android:inputType="date"
         android:text="@string/info_fecha"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fechatext" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/calendarPic"
+        app:layout_constraintTop_toBottomOf="@+id/btnChange" />
 
     <Button
         android:id="@+id/btnChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/cambiar_fecha"
+        app:layout_constraintBottom_toBottomOf="@+id/daleText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/fechatext"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
-
-    <ImageView
-        android:id="@+id/birrete"
-        android:layout_width="54dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="36dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/birrete"
-        tools:layout_editor_absoluteY="520dp" />
+        app:layout_constraintStart_toEndOf="@+id/daleText"
+        app:layout_constraintTop_toTopOf="@+id/daleText"
+        app:layout_constraintVertical_bias="0.777" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/listaBox"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="280dp"
         android:layout_height="70dp"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="530dp">
+        app:layout_constraintBottom_toBottomOf="@+id/capPic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toEndOf="@+id/capPic"
+        app:layout_constraintTop_toTopOf="@+id/capPic">
 
         <AutoCompleteTextView
             android:id="@+id/lista"
@@ -174,5 +126,75 @@
             android:inputType="none"
             android:text="@string/grado_escolaridad" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/namePic"
+        android:layout_width="62dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="84dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/persona" />
+
+    <ImageView
+        android:id="@+id/lastNPic"
+        android:layout_width="63dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="44dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintStart_toStartOf="@+id/namePic"
+        app:layout_constraintTop_toBottomOf="@+id/namePic"
+        app:srcCompat="@drawable/persona_mas" />
+
+    <ImageView
+        android:id="@+id/sexPic"
+        android:layout_width="70dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/lastNPic"
+        app:srcCompat="@drawable/personas" />
+
+    <ImageView
+        android:id="@+id/calendarPic"
+        android:layout_width="79dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="36dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/sexPic"
+        app:srcCompat="@drawable/calendario" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="32dp" />
+
+    <ImageView
+        android:id="@+id/capPic"
+        android:layout_width="81dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="60dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/calendarPic"
+        app:srcCompat="@drawable/birrete" />
+
+
+    <Button
+        android:id="@+id/NextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/siguiente"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

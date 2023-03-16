@@ -7,7 +7,10 @@ android {
     namespace 'co.edu.udea.compumovil.gr02_20231.lab1'
     compileSdk 32
 
-    buildFeatures{viewBinding true}
+    buildFeatures{
+        dataBinding = true
+        viewBinding = true
+    }
 
 
     defaultConfig {
