@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="inf_personal">Informacion Personal</string>
-    <string name="nombre">Nombre</string>
-    <string name="apellido">Apellidos</string>
-    <string name="sexo">Sexo</string>
+    <string name="personal_info">Informacion Personal</string>
+    <string name="name">Nombre</string>
+    <string name="last_name">Apellidos</string>
+    <string name="gender">Sexo</string>
+    <string name="man">Hombre</string>
+    <string name="woman">Mujer</string>
+    <string name="date">Fecha de nacimiento</string>
+    <string name="change_date">Cambiar</string>
+    <string name="placeholder">Contenedor</string>
+    <string name="date_info">Info</string>
+    <string name="scholarly_level">Grado de escolaridad</string>
+    <string name="next">Siguiente</string>
     <string name="required">*requerido</string>
     <string name="email_hint">Correo*</string>
     <string name="phone_hint">Teléfono*</string>
@@ -21,4 +29,10 @@
     <string name="must_be_a_number">Debe ser un número teléfonico</string>
     <string name="must_be_between_4_and_12_digits">Debe tener entre 4 y 12 dígitos</string>
     <string name="must_be_a_valid_email">Debe ser un correo valido</string>
+    <string-array name="school_grade">
+        <item>Primaria</item>
+        <item>Secundaria</item>
+        <item>Universitario</item>
+        <item>Otro</item>
+    </string-array>
 </resources>

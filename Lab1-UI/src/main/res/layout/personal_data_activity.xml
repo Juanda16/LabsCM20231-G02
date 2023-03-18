@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
     <TextView
@@ -11,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/inf_personal"
+        android:text="@string/personal_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +26,7 @@
         android:layout_marginTop="84dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/nombre"
+        android:text="@string/name"
         app:layout_constraintStart_toEndOf="@+id/namePic"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +37,7 @@
         android:layout_marginStart="32dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/apellido"
+        android:text="@string/last_name"
         app:layout_constraintBottom_toBottomOf="@+id/lastNPic"
         app:layout_constraintStart_toEndOf="@+id/lastNPic"
         app:layout_constraintTop_toTopOf="@+id/lastNPic" />
@@ -46,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:text="@string/sexo"
+        android:text="@string/gender"
         app:layout_constraintBottom_toBottomOf="@+id/sexPic"
         app:layout_constraintStart_toEndOf="@+id/sexPic"
         app:layout_constraintTop_toTopOf="@+id/sexPic" />
@@ -57,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="40dp"
-        android:text="@string/mujer"
+        android:text="@string/woman"
         app:layout_constraintBottom_toBottomOf="@+id/radioButtonM"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/radioButtonM"
@@ -68,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:text="@string/hombre"
+        android:text="@string/man"
         app:layout_constraintBottom_toBottomOf="@+id/sexPic"
         app:layout_constraintStart_toEndOf="@+id/sexText"
         app:layout_constraintTop_toTopOf="@+id/sexPic" />
@@ -80,7 +81,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="4dp"
         android:contentDescription="@string/placeholder"
-        android:text="@string/fecha"
+        android:text="@string/date"
         app:layout_constraintStart_toEndOf="@+id/calendarPic"
         app:layout_constraintTop_toTopOf="@+id/calendarPic" />
 
@@ -90,7 +91,7 @@
         android:layout_height="58dp"
         android:ems="10"
         android:inputType="date"
-        android:text="@string/info_fecha"
+        android:text="@string/date_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/calendarPic"
         app:layout_constraintTop_toBottomOf="@+id/btnChange" />
@@ -100,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/cambiar_fecha"
+        android:text="@string/change_date"
         app:layout_constraintBottom_toBottomOf="@+id/daleText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/daleText"
@@ -124,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:inputType="none"
-            android:text="@string/grado_escolaridad" />
+            android:text="@string/scholarly_level" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
@@ -173,7 +174,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="32dp" />
+        app:layout_constraintGuide_begin="16dp" />
 
     <ImageView
         android:id="@+id/capPic"
@@ -193,7 +194,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:onClick="sendMessage"
-        android:text="@string/siguiente"
+        android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
