@@ -3,6 +3,7 @@ package co.edu.udea.compumovil.gr02_20231.lab1
 //import co.edu.udea.compumovil.gr02_20231.lab1.databinding.perspnal_data_activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
@@ -13,9 +14,6 @@ import co.edu.udea.compumovil.gr02_20231.lab1.databinding.ActivityMainBinding
 //var boton: Button? = null
 //@SuppressLint("StaticFieldLeak")
 //var cajaFecha : EditText? = null
-
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -37,8 +35,6 @@ class MainActivity : AppCompatActivity() {
         )
         var textView: AutoCompleteTextView = findViewById(R.id.lista)
         textView.setAdapter(adapter)
-
-
 
 
         //inicializarComponentes();
