@@ -1,6 +1,7 @@
 package co.edu.udea.compumovil.gr02_20231.lab1
 
 //import co.edu.udea.compumovil.gr02_20231.lab1.databinding.perspnal_data_activity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -12,6 +13,9 @@ import co.edu.udea.compumovil.gr02_20231.lab1.databinding.ActivityMainBinding
 //var boton: Button? = null
 //@SuppressLint("StaticFieldLeak")
 //var cajaFecha : EditText? = null
+
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -73,6 +77,11 @@ class MainActivity : AppCompatActivity() {
 //            listener(year, month, day)
 //        }
 //    }
+
+    fun sendMessage(view: View) {
+        val intent = Intent(this@MainActivity, ContactDataActivity::class.java)
+        startActivity(intent)
+    }
 }
 
 

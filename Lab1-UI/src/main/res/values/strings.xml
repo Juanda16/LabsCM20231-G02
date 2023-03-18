@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Labs20231-Gr02</string>
+    <string name="app_name" translatable="false">Labs20231-Gr02</string>
     <string name="inf_personal">Informacion Personal</string>
     <string name="nombre">Nombre</string>
     <string name="apellido">Apellidos</string>
@@ -12,7 +12,23 @@
     <string name="info_fecha">Info</string>
     <string name="grado_escolaridad">Grado de escolaridad</string>
     <string name="siguiente">Siguiente</string>
-
+    <string name="required">*required</string>
+    <string name="email_hint">Email*</string>
+    <string name="email">Email</string>
+    <string name="phone_hint">Phone*</string>
+    <string name="phone">Phone</string>
+    <string name="city">City</string>
+    <string name="address">Address</string>
+    <string name="country">Country</string>
+    <string name="country_hint">Country*</string>
+    <string name="save">Save</string>
+    <string name="form_submitted">Form Submitted</string>
+    <string name="okay">Okay</string>
+    <string name="invalid_form">Invalid Form</string>
+    <string name="contact_information">Contact information</string>
+    <string name="must_be_a_number">Must be all Digits</string>
+    <string name="must_be_between_4_and_12_digits">Must be between 4 and 12 digits</string>
+    <string name="must_be_a_valid_email">Must be a valid email</string>
     <string-array name="school_grade">
         <item>Primaria</item>
         <item>Secundaria</item>
