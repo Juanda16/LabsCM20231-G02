@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name" translatable="false">Labs20231-Gr02</string>
     <string name="personal_info">Personal Information</string>
-    <string name="name">Name</string>
-    <string name="last_name">Last Name</string>
+    <string name="name_hint">Name*</string>
+    <string name="last_name_hint">Last Name*</string>
     <string name="gender">Gender</string>
     <string name="man">Man</string>
     <string name="woman">Women</string>
     <string name="date">Date of Birth</string>
     <string name="change_date">Change</string>
     <string name="placeholder">Placeholder</string>
-    <string name="date_info">Info</string>
+    <string name="date_info">Info*</string>
     <string name="scholarly_level">School grade</string>
     <string name="next">Next</string>
     <string name="required">*required</string>

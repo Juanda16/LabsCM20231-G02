@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="personal_info">Informacion Personal</string>
-    <string name="name">Nombre</string>
-    <string name="last_name">Apellidos</string>
+    <string name="name_hint">Nombre*</string>
+    <string name="last_name_hint">Apellidos*</string>
     <string name="gender">Sexo</string>
     <string name="man">Hombre</string>
     <string name="woman">Mujer</string>
     <string name="date">Fecha de nacimiento</string>
     <string name="change_date">Cambiar</string>
     <string name="placeholder">Contenedor</string>
-    <string name="date_info">Info</string>
+    <string name="date_info">Info*</string>
     <string name="scholarly_level">Grado de escolaridad</string>
     <string name="next">Siguiente</string>
     <string name="required">*requerido</string>
