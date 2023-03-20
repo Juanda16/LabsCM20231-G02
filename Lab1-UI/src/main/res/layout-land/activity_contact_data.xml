@@ -101,7 +101,7 @@
             style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/country"
+            android:hint="@string/country_hint"
             android:imeOptions="actionNext"
             android:inputType="text"
             android:lines="1"
@@ -147,7 +147,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/address"
-            android:inputType="textNoSuggestions|text"
+            android:inputType="textNoSuggestions|textVisiblePassword"
             android:lines="1"
             android:maxLength="50" />
 

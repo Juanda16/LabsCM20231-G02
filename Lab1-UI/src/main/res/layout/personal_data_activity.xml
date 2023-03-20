@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/general_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/personal_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/Name"
+        android:layout_width="231dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="84dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/name"
+        app:layout_constraintStart_toEndOf="@+id/namePic"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/LastName"
+        android:layout_width="233dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/last_name"
+        app:layout_constraintBottom_toBottomOf="@+id/lastNPic"
+        app:layout_constraintStart_toEndOf="@+id/lastNPic"
+        app:layout_constraintTop_toTopOf="@+id/lastNPic" />
+
+    <TextView
+        android:id="@+id/sexText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="@string/gender"
+        app:layout_constraintBottom_toBottomOf="@+id/sexPic"
+        app:layout_constraintStart_toEndOf="@+id/sexPic"
+        app:layout_constraintTop_toTopOf="@+id/sexPic" />
+
+    <RadioButton
+        android:id="@+id/radioButtonW"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="40dp"
+        android:text="@string/woman"
+        app:layout_constraintBottom_toBottomOf="@+id/radioButtonM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/radioButtonM"
+        app:layout_constraintTop_toTopOf="@+id/radioButtonM" />
+
+    <RadioButton
+        android:id="@+id/radioButtonM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="@string/man"
+        app:layout_constraintBottom_toBottomOf="@+id/sexPic"
+        app:layout_constraintStart_toEndOf="@+id/sexText"
+        app:layout_constraintTop_toTopOf="@+id/sexPic" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/listaBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="@+id/capPic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toEndOf="@+id/capPic"
+        app:layout_constraintTop_toTopOf="@+id/capPic">
+
+        <AutoCompleteTextView
+            android:id="@+id/lista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="none"
+            android:text="@string/scholarly_level" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/namePic"
+        android:layout_width="62dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="84dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/persona" />
+
+    <ImageView
+        android:id="@+id/lastNPic"
+        android:layout_width="63dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="44dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintStart_toStartOf="@+id/namePic"
+        app:layout_constraintTop_toBottomOf="@+id/namePic"
+        app:srcCompat="@drawable/persona_mas" />
+
+    <ImageView
+        android:id="@+id/birthdayImageView"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/birthdayContainer"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/birthdayContainer"
+        app:srcCompat="@drawable/outline_cake_24"
+        app:tint="?attr/colorSecondary" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/birthdayContainer"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        app:helperText="@string/required"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sexPic">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/birthdayEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cursorVisible="false"
+            android:drawableEnd="@drawable/outline_calendar_today_24"
+            android:drawablePadding="8dp"
+            android:drawableTint="?attr/colorAccent"
+            android:focusable="false"
+            android:focusableInTouchMode="true"
+            android:hint="@string/birthday_hint"
+            android:inputType="none"
+            android:lines="1"
+            android:maxLength="20" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <ImageView
+        android:id="@+id/sexPic"
+        android:layout_width="70dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/lastNPic"
+        app:srcCompat="@drawable/personas" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <ImageView
+        android:id="@+id/capPic"
+        android:layout_width="81dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/birthdayContainer"
+        app:srcCompat="@drawable/birrete" />
+
+
+    <Button
+        android:id="@+id/NextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="sendMessage"
+        android:text="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

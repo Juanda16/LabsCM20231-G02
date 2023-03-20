@@ -1,17 +1,18 @@
 package co.edu.udea.compumovil.gr02_20231.lab1
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import co.edu.udea.compumovil.gr02_20231.lab1.databinding.ActivityContactDataBinding
+import co.edu.udea.compumovil.gr02_20231.lab1.model.Person
 
 class ContactDataActivity : AppCompatActivity() {
-
+    private var person: Person? = null;
     private lateinit var binding: ActivityContactDataBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +20,9 @@ class ContactDataActivity : AppCompatActivity() {
 
         binding = ActivityContactDataBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        person = intent.getSerializableExtra("Person") as Person?
+
         phoneFocusListener()
         emailFocusListener()
         countryFocusListener()
@@ -28,13 +32,13 @@ class ContactDataActivity : AppCompatActivity() {
     }
 
     private fun submitForm() {
-        binding.phoneContainer.helperText = validatePhone()
-        binding.emailContainer.helperText = validateEmail()
-        binding.countryContainer.helperText = validateCountry()
+        binding.phoneContainer.error = validatePhone()
+        binding.emailContainer.error = validateEmail()
+        binding.countryContainer.error = validateCountry()
 
-        val valid = binding.phoneContainer.helperText == null &&
-                binding.emailContainer.helperText == null &&
-                binding.countryContainer.helperText == null
+        val valid = binding.phoneContainer.error == null &&
+                binding.emailContainer.error == null &&
+                binding.countryContainer.error == null
 
 
         if (valid) {
@@ -47,24 +51,14 @@ class ContactDataActivity : AppCompatActivity() {
 
     private fun resetForm() {
 
-        /*
-        var intent: Intent = intent
-        val fullName = intent.getStringExtra("fullName")
-        val gender = intent.getStringExtra("gender")
-        val birthDate = intent.getStringExtra("birthDate")
-        val schoolGrade = intent.getStringExtra("schoolGrade")
-
-        var message = "Full name: $fullName"
-        if (gender != null) {
-            message += "\nGender: $gender"
-        }
-        message += "\nBirthdate: $birthDate"
-        if (schoolGrade != null) {
-            message += "\nSchool level: $schoolGrade"
-        }
-        */
-
-        var message = "${getString(R.string.phone)}: ${binding.phoneEditText.text}"
+        var message = "${getString(R.string.name)}: ${person?.Name}"
+        message += "\n${getString(R.string.last_name)}: ${person?.lastName}"
+        if (person?.gender != null)
+            message += "\n${getString(R.string.gender)}: ${person?.gender}"
+        message += "\n${getString(R.string.birth_date)}: ${person?.birthday}"
+        if (person?.educationLevel != null)
+            message += "\n${getString(R.string.scholarly_level)}: ${person?.educationLevel}"
+        message += "${getString(R.string.phone)}: ${binding.phoneEditText.text}"
         message += "\n${getString(R.string.email)}: ${binding.emailEditText.text}"
         message += "\n${getString(R.string.country)}: ${binding.countryEditText.text}"
         if (binding.cityEditText.text.isNotEmpty())
@@ -77,16 +71,9 @@ class ContactDataActivity : AppCompatActivity() {
             .setTitle(getString(R.string.form_submitted))
             .setMessage(message)
             .setPositiveButton(getString(R.string.okay)) { _, _ ->
-                binding.phoneEditText.text?.clear()
-                binding.emailEditText.text?.clear()
-                binding.countryEditText.text?.clear()
-                binding.cityEditText.text?.clear()
-                binding.addressEditText.text?.clear()
 
-                binding.phoneContainer.helperText = getString(R.string.required)
-                binding.emailContainer.helperText = getString(R.string.required)
-                binding.countryContainer.helperText = getString(R.string.required)
-
+                val intent = Intent(this@ContactDataActivity, MainActivity::class.java)
+                startActivity(intent)
             }
             .show()
         showLog()
@@ -120,20 +107,23 @@ class ContactDataActivity : AppCompatActivity() {
 
     private fun invalidForm() {
         var message = ""
-        if (binding.phoneContainer.helperText != null) {
-            message += "${R.string.phone}: ${binding.phoneContainer.helperText}"
+        if (binding.phoneContainer.error != null) {
+            message += "${getString(R.string.phone)}: ${binding.phoneContainer.error}"
+
         }
-        if (binding.emailContainer.helperText != null) {
-            message += "\n${R.string.email}: ${binding.emailContainer.helperText}"
+        if (binding.emailContainer.error != null) {
+            message += "\n${getString(R.string.email)}: ${binding.emailContainer.error}"
+
         }
-        if (binding.countryContainer.helperText != null) {
-            message += "\n${R.string.country}: ${binding.countryContainer.helperText}"
+        if (binding.countryContainer.error != null) {
+            message += "\n${getString(R.string.country)}: ${binding.countryContainer.error}"
+
         }
         AlertDialog.Builder(this)
             .setTitle(getString(R.string.invalid_form))
             .setMessage(message)
             .setPositiveButton(getString(R.string.okay)) { _, _ ->
-                // do nothing
+
             }
             .show()
 
@@ -144,13 +134,16 @@ class ContactDataActivity : AppCompatActivity() {
     private fun validatePhone(): String? {
         val phoneText = binding.phoneEditText.text.toString()
         if (phoneText.isEmpty()) {
+
             return getString(R.string.required)
         }
         if (!phoneText.matches(".*[0-9].*".toRegex())) {
+
             return getString(R.string.must_be_a_number)
         }
         //bettwen 4 and 12 digits
         if (phoneText.length < 4 || phoneText.length > 12) {
+
             return getString(R.string.must_be_between_4_and_12_digits)
         }
         return null
@@ -159,7 +152,7 @@ class ContactDataActivity : AppCompatActivity() {
     private fun phoneFocusListener() {
         binding.phoneEditText.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.phoneContainer.helperText = validatePhone()
+                binding.phoneContainer.error = validatePhone()
             }
         }
     }
@@ -167,9 +160,11 @@ class ContactDataActivity : AppCompatActivity() {
     private fun validateEmail(): String? {
         val emailText = binding.emailEditText.text.toString()
         if (emailText.isEmpty()) {
+
             return getString(R.string.required)
         }
         if (!emailText.matches(".*@.*".toRegex())) {
+
             return getString(R.string.must_be_a_valid_email)
         }
         return null
@@ -178,7 +173,7 @@ class ContactDataActivity : AppCompatActivity() {
     private fun emailFocusListener() {
         binding.emailEditText.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.emailContainer.helperText = validateEmail()
+                binding.emailContainer.error = validateEmail()
             }
         }
     }
@@ -186,6 +181,7 @@ class ContactDataActivity : AppCompatActivity() {
     private fun validateCountry(): String? {
         val countryText = binding.countryEditText.text.toString()
         if (countryText.isEmpty()) {
+
             return getString(R.string.required)
         }
         if (binding.countryEditText.text.toString().lowercase() == "colombia") {
@@ -255,7 +251,7 @@ class ContactDataActivity : AppCompatActivity() {
 
         binding.countryEditText.setOnFocusChangeListener { _, focused ->
             if (!focused) {
-                binding.countryContainer.helperText = validateCountry()
+                binding.countryContainer.error = validateCountry()
             }
         }
     }

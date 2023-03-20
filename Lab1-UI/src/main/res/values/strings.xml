@@ -29,7 +29,10 @@
     <string name="must_be_a_number">Must be all Digits</string>
     <string name="must_be_between_4_and_12_digits">Must be between 4 and 12 digits</string>
     <string name="must_be_a_valid_email">Must be a valid email</string>
-
+    <string name="birth_date">Birth date</string>
+    <string name="birthday_hint">Birthday*</string>
+    <string name="select_date">Select date</string>
+    <string name="invalid_date">Invalid date</string>
     <string-array name="school_grade">
         <item>Primary</item>
         <item>Secondary</item>
