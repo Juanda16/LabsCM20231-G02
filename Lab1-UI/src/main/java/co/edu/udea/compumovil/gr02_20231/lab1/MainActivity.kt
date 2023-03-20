@@ -17,7 +17,8 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_personal_data)
+        val intent = Intent(this@MainActivity, PersonalDataActivity::class.java)
+        startActivity(intent)
 
 
     }
@@ -56,11 +57,7 @@ class MainActivity : AppCompatActivity() {
 //        }
 //    }
 
-    fun sendMessage(view: View) {
 
-        val intent = Intent(this@MainActivity, ContactDataActivity::class.java)
-        startActivity(intent)
-    }
 }
 
 

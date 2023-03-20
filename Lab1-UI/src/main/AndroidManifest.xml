@@ -20,6 +20,12 @@
             android:windowSoftInputMode="adjustPan"
             />
         <activity
+            android:name=".PersonalDataActivity"
+            android:parentActivityName=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"
+            />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
