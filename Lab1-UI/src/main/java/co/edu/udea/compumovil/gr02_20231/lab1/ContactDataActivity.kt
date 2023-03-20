@@ -18,15 +18,16 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException
 
+
 class ContactDataActivity : AppCompatActivity() {
 
-    val cities = mutableListOf<String>(
+    private val cities = mutableListOf(
         "Bogotá",
         "Medellín",
 
         )
 
-    val countries = listOf(
+    private val countries = listOf(
         "Argentina",
         "Bolivia",
         "Brasil",
@@ -82,6 +83,7 @@ class ContactDataActivity : AppCompatActivity() {
         binding.countryEditText.setOnItemClickListener { parent, view, position, id ->
             val selectedItem = adapterCountry.getItem(position)
             // Perform action with the selected item
+            Log.d("Test 2", ">>$selectedItem")
             createCoroutine(selectedItem ?: "colombia")
         }
         binding.cityEditText.setAdapter(adapterCity)
