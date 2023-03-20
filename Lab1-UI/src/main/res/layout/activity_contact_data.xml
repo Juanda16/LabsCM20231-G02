@@ -24,16 +24,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/phoneContainer"
         app:srcCompat="@drawable/outline_local_phone_24"
-        app:tint="@color/md_theme_light_outline"/>
+        app:tint="?attr/colorSecondary" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/phoneContainer"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         app:helperText="@string/required"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -58,16 +59,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/emailContainer"
         app:srcCompat="@drawable/outline_email_24"
-        app:tint="@color/md_theme_light_outline"/>
+        app:tint="?attr/colorSecondary" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailContainer"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         app:helperText="@string/required"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneContainer">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -92,17 +94,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/countryContainer"
         app:srcCompat="@drawable/outline_place_24"
-        app:tint="@color/md_theme_light_outline"/>
+        app:tint="?attr/colorSecondary" />
 
     <com.google.android.material.textfield.TextInputLayout
 
         android:id="@+id/countryContainer"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         app:helperText="@string/required"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailContainer">
 
         <AutoCompleteTextView
@@ -110,7 +113,7 @@
             style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/country"
+            android:hint="@string/country_hint"
             android:imeOptions="actionNext"
             android:inputType="text"
             android:lines="1"
@@ -122,9 +125,10 @@
         android:id="@+id/cityContainer"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/countryContainer">
 
         <AutoCompleteTextView
@@ -145,9 +149,10 @@
         android:id="@+id/addressContainer"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cityContainer">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -155,7 +160,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/address"
-            android:inputType="textNoSuggestions|text"
+            android:inputType="textNoSuggestions|textVisiblePassword"
             android:lines="1"
             android:maxLength="50" />
 

@@ -7,7 +7,10 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
-import co.edu.udea.compumovil.gr02_20231.lab1.databinding.ActivityMainBinding
+import co.edu.udea.compumovil.gr02_20231.lab1.databinding.PersonalDataActivityBinding
+import co.edu.udea.compumovil.gr02_20231.lab1.model.Person
+import com.google.android.material.datepicker.MaterialDatePicker
+import java.util.*
 
 
 //@SuppressLint("StaticFieldLeak")
@@ -19,14 +22,17 @@ import co.edu.udea.compumovil.gr02_20231.lab1.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     //class MainActivity : AppCompatActivity(), OnClickListener{
 
+    var selectedDate: Date? = null
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: PersonalDataActivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.personal_data_activity)
-        //setContentView(binding.root)
+
+        binding = PersonalDataActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         val schoolGrade = resources.getStringArray(R.array.school_grade)
         val adapter = ArrayAdapter(
             this,
@@ -38,9 +44,73 @@ class MainActivity : AppCompatActivity() {
 
 
         //inicializarComponentes();
+
+        birthDateFocusListener()
+
+    }
+    private fun submitForm() {
+        //TODO: Validar campos
+
+            var person = Person(
+               "Name",
+                "lastName",
+                "gender",
+                getDateString(selectedDate),
+                "educationLevel",
+            )
+
+            val intent = Intent(this@MainActivity, ContactDataActivity::class.java)
+            intent.putExtra("Person", person);
+            startActivity(intent)
     }
 
+    private fun birthDateFocusListener() {
 
+        binding.birthdayContainer.editText?.setOnClickListener {
+            val datePicker = MaterialDatePicker.Builder.datePicker()
+                .setInputMode(MaterialDatePicker.INPUT_MODE_CALENDAR)
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .setTitleText(getString(R.string.select_date))
+                .build()
+
+            datePicker.show(supportFragmentManager, "DATE_PICKER_TAG")
+            datePicker.addOnPositiveButtonClickListener {
+                selectedDate = Date(datePicker.selection!!)
+
+                binding.birthdayContainer.editText?.setText(datePicker.headerText)
+                if (validateBirthDate() == null) {
+                    binding.birthdayContainer.error = null
+                    binding.birthdayContainer.helperText = getString(R.string.required)
+                } else {
+                    binding.birthdayContainer.error = validateBirthDate()
+                }
+            }
+
+        }
+
+
+    }
+
+    private fun validateBirthDate(): String? {
+        val dateInput = binding.birthdayContainer.editText?.text.toString()
+        if (dateInput.isEmpty()) {
+            return getString(R.string.required)
+        }
+        if (selectedDate?.after(Date()) == true) {
+            return getString(R.string.invalid_date)
+        }
+        return null
+    }
+
+    private fun getDateString(selectedDate: Date?): String {
+        return if (selectedDate != null) {
+            selectedDate.time
+            "${selectedDate.date+1}/${selectedDate.month+1}/${selectedDate.year+1900}"
+        } else {
+            ""
+        }
+
+    }
 //    private fun inicializarComponentes(){
 //        boton = findViewById(R.id.btnChange)
 //        cajaFecha= findViewById(R.id.datePlace)

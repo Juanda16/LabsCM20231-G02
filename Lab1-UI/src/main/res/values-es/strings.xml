@@ -29,6 +29,7 @@
     <string name="must_be_a_number">Debe ser un número teléfonico</string>
     <string name="must_be_between_4_and_12_digits">Debe tener entre 4 y 12 dígitos</string>
     <string name="must_be_a_valid_email">Debe ser un correo valido</string>
+    <string name="birth_date">Birth date</string>
     <string-array name="school_grade">
         <item>Primaria</item>
         <item>Secundaria</item>
