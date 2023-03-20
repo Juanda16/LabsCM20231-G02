@@ -1,28 +1,90 @@
 package co.edu.udea.compumovil.gr02_20231.lab1
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import co.edu.udea.compumovil.gr02_20231.lab1.databinding.ActivityContactDataBinding
+import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.FormBody
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import java.io.IOException
 
 class ContactDataActivity : AppCompatActivity() {
+
+    val cities = mutableListOf<String>(
+        "Bogotá",
+        "Medellín",
+
+        )
+
+    val countries = listOf(
+        "Argentina",
+        "Bolivia",
+        "Brasil",
+        "Chile",
+        "Colombia",
+        "Costa Rica",
+        "Cuba",
+        "Ecuador",
+        "El Salvador",
+        "Guatemala",
+        "Honduras",
+        "México",
+        "Nicaragua",
+        "Panamá",
+        "Paraguay",
+        "Perú",
+        "Puerto Rico",
+        "República Dominicana",
+        "Uruguay",
+        "Venezuela"
+    )
+
+    private lateinit var adapterCity: ArrayAdapter<String>
+    private lateinit var adapterCountry: ArrayAdapter<String>
 
     private lateinit var binding: ActivityContactDataBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_contact_data)
 
+
+        setContentView(R.layout.activity_contact_data)
         binding = ActivityContactDataBinding.inflate(layoutInflater)
+
+        adapterCountry = ArrayAdapter(
+            this,
+            com.google.android.material.R.layout.support_simple_spinner_dropdown_item,
+            countries
+        )
+
+        adapterCity = ArrayAdapter(
+            this,
+            com.google.android.material.R.layout.support_simple_spinner_dropdown_item,
+            cities
+        )
+
         setContentView(binding.root)
         phoneFocusListener()
         emailFocusListener()
         countryFocusListener()
 
+        binding.countryEditText.setOnItemClickListener { parent, view, position, id ->
+            val selectedItem = adapterCountry.getItem(position)
+            // Perform action with the selected item
+            createCoroutine(selectedItem ?: "colombia")
+        }
+        binding.cityEditText.setAdapter(adapterCity)
         binding.submitButton.setOnClickListener { submitForm() }
 
     }
@@ -188,35 +250,14 @@ class ContactDataActivity : AppCompatActivity() {
         if (countryText.isEmpty()) {
             return getString(R.string.required)
         }
+
+
+
+
         if (binding.countryEditText.text.toString().lowercase() == "colombia") {
             //TODO get cities from API https://countriesnow.space/
-            val cities = listOf(
-                "Bogotá",
-                "Medellín",
-                "Cali",
-                "Barranquilla",
-                "Cartagena",
-                "Cúcuta",
-                "Bucaramanga",
-                "Soledad",
-                "Santa Marta",
-                "Ibagué",
-                "Pereira",
-                "Manizales",
-                "Bello",
-                "Neiva",
-                "Pasto",
-                "Armenia",
-                "Villavicencio",
-                "Buenaventura",
-                "Valledupar",
-            )
-            val adapterCity = ArrayAdapter(
-                this,
-                com.google.android.material.R.layout.support_simple_spinner_dropdown_item,
-                cities
-            )
-            binding.cityEditText.setAdapter(adapterCity)
+
+
         }
         return null
     }
@@ -224,40 +265,68 @@ class ContactDataActivity : AppCompatActivity() {
     private fun countryFocusListener() {
         //Autocomplete countries
         //Example TODO get from API https://countriesnow.space/
-        val countries = listOf(
-            "Argentina",
-            "Bolivia",
-            "Brasil",
-            "Chile",
-            "Colombia",
-            "Costa Rica",
-            "Cuba",
-            "Ecuador",
-            "El Salvador",
-            "Guatemala",
-            "Honduras",
-            "México",
-            "Nicaragua",
-            "Panamá",
-            "Paraguay",
-            "Perú",
-            "Puerto Rico",
-            "República Dominicana",
-            "Uruguay",
-            "Venezuela"
-        )
-        val adapterCity = ArrayAdapter(
-            this,
-            com.google.android.material.R.layout.support_simple_spinner_dropdown_item,
-            countries
-        )
-        binding.countryEditText.setAdapter(adapterCity)
+
+
+        binding.countryEditText.setAdapter(adapterCountry)
+
 
         binding.countryEditText.setOnFocusChangeListener { _, focused ->
             if (!focused) {
                 binding.countryContainer.helperText = validateCountry()
             }
         }
+    }
+
+    private fun createCoroutine(countryCode: String) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val cities2 = getCitiesByCountry("colombia").data
+            cities.clear()
+            cities.addAll(cities2)
+
+            withContext(Dispatchers.Main) {
+                adapterCity.notifyDataSetChanged()
+            }
+        }
+    }
+
+    fun getCitiesByCountry(countryCode: String): CitiesResponse {
+        val country = countryCode.lowercase()
+        val client = OkHttpClient()
+
+        val requestBody = FormBody.Builder()
+            .add("country", country)
+            .build()
+
+        val request = Request.Builder()
+            .url("https://countriesnow.space/api/v0.1/countries/cities")
+            .post(requestBody)
+            .build()
+
+        try {
+            val response = client.newCall(request).execute()
+            Log.d("RESPONSE", "$response")
+            if (!response.isSuccessful) {
+                throw IOException("Unexpected code $response")
+            }
+
+            val responseBody = response.body?.string()
+            if (responseBody != null) {
+                Log.d(ContentValues.TAG, responseBody)
+
+                val gson = Gson()
+                val apiResponse = gson.fromJson(responseBody, CitiesResponse::class.java)
+                Log.d("Object1", apiResponse.data[0])
+
+
+                return apiResponse ?: CitiesResponse(data = emptyList(), error = true, msg = "")
+
+            } else
+                return CitiesResponse(data = emptyList(), error = true, msg = "")
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+        return CitiesResponse(data = emptyList(), error = true, msg = "")
     }
 
 }

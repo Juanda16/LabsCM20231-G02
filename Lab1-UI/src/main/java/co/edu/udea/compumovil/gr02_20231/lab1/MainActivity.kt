@@ -11,6 +11,9 @@ import co.edu.udea.compumovil.gr02_20231.lab1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    var cities: List<String> = listOf("Medellin", "Otra")
+    lateinit var cities2: List<String>
+
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -35,8 +38,8 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this@MainActivity, ContactDataActivity::class.java)
         startActivity(intent)
     }
+
+
 }
-
-
 
 
