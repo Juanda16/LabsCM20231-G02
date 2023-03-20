@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".PersonalDataActivity">
+
+    <TextView
+        android:id="@+id/general_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:text="@string/personal_info"
+        android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameContainer"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="8dp"
+        app:helperText="@string/required"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName|textCapSentences|textNoSuggestions"
+            android:hint="@string/name_hint"
+            android:imeOptions="actionNext"
+            android:lines="1"
+            android:maxLength="20"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/lastNameContainer"
+        android:layout_width="267dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="8dp"
+        app:helperText="@string/required"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/nameContainer">
+
+        <EditText
+            android:id="@+id/LastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/last_name_hint"
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName|textCapSentences|textNoSuggestions"
+            android:lines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/genderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="@string/gender"
+        app:layout_constraintBottom_toBottomOf="@+id/genderPic"
+        app:layout_constraintStart_toEndOf="@+id/genderPic"
+        app:layout_constraintTop_toTopOf="@+id/genderPic"
+        app:layout_constraintVertical_bias="0.476" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="222dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        android:onClick="onRadioButtonClicked"
+        app:layout_constraintBottom_toBottomOf="@+id/genderText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/genderText"
+        app:layout_constraintVertical_bias="0.62">
+
+        <RadioButton
+            android:id="@+id/radioButtonM"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:text="@string/man"
+            app:layout_constraintBottom_toBottomOf="@+id/genderText"
+            app:layout_constraintEnd_toStartOf="@+id/radioButtonW"
+            app:layout_constraintStart_toEndOf="@+id/genderText"
+            app:layout_constraintTop_toTopOf="@+id/genderText" />
+
+        <RadioButton
+            android:id="@+id/radioButtonW"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:text="@string/woman" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/placeholder"
+        android:text="@string/date"
+        app:layout_constraintStart_toEndOf="@+id/calendarPic"
+        app:layout_constraintTop_toTopOf="@+id/calendarPic" />
+
+    <EditText
+        android:id="@+id/datePlace"
+        android:layout_width="246dp"
+        android:layout_height="58dp"
+        android:inputType="date"
+        android:hint="@string/date_info"
+        android:lines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/calendarPic"
+        app:layout_constraintTop_toBottomOf="@+id/btnChange" />
+
+    <Button
+        android:id="@+id/btnChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/change_date"
+        app:layout_constraintBottom_toBottomOf="@+id/dateText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dateText"
+        app:layout_constraintTop_toTopOf="@+id/dateText"
+        app:layout_constraintVertical_bias="0.777" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/listaBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="@+id/capPic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toEndOf="@+id/capPic"
+        app:layout_constraintTop_toTopOf="@+id/capPic">
+
+        <AutoCompleteTextView
+            android:id="@+id/lista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="none"
+            android:text="@string/scholarly_level" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/namePic"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/nameContainer"
+        app:srcCompat="@drawable/baseline_person_24"
+        app:tint="@color/md_theme_light_outline" />
+
+    <ImageView
+        android:id="@+id/lastNPic"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/lastNameContainer"
+        app:srcCompat="@drawable/baseline_person_add_alt_1_24"
+        app:tint="@color/md_theme_light_outline" />
+
+    <ImageView
+        android:id="@+id/genderPic"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="72dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/lastNPic"
+        app:srcCompat="@drawable/baseline_people_24"
+        app:tint="@color/md_theme_light_outline" />
+
+    <ImageView
+        android:id="@+id/calendarPic"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="72dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/genderPic"
+        app:srcCompat="@drawable/baseline_calendar_month_24"
+        app:tint="@color/md_theme_light_outline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <ImageView
+        android:id="@+id/capPic"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="90dp"
+        android:contentDescription="@string/placeholder"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/calendarPic"
+        app:srcCompat="@drawable/baseline_school_24"
+        app:tint="@color/md_theme_light_outline" />
+
+
+    <Button
+        android:id="@+id/NextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="sendMessage"
+        android:text="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

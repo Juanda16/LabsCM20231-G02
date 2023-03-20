@@ -5,27 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".MainActivity">
+    tools:context=".PersonalDataActivity">
 
     <TextView
         android:id="@+id/general_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_width="191dp"
+        android:layout_height="29dp"
         android:text="@string/personal_info"
-        android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+        android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.585"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="-6dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameContainer"
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_width="261dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         app:helperText="@string/required"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toEndOf="@+id/namePic"
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
@@ -33,19 +35,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName|textCapSentences|textNoSuggestions"
             android:hint="@string/name_hint"
             android:imeOptions="actionNext"
+            android:inputType="textPersonName|textCapSentences|textNoSuggestions"
             android:lines="1"
-            android:maxLength="20"/>
+            android:maxLength="20"
+            tools:layout_editor_absoluteY="5dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/lastNameContainer"
         android:layout_width="267dp"
         android:layout_height="79dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="8dp"
         app:helperText="@string/required"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/nameContainer">
@@ -62,44 +63,45 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/sexText"
+        android:id="@+id/genderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="@string/gender"
-        app:layout_constraintBottom_toBottomOf="@+id/sexPic"
-        app:layout_constraintStart_toEndOf="@+id/sexPic"
-        app:layout_constraintTop_toTopOf="@+id/sexPic"
+        app:layout_constraintBottom_toBottomOf="@+id/genderPic"
+        app:layout_constraintStart_toEndOf="@+id/genderPic"
+        app:layout_constraintTop_toTopOf="@+id/genderPic"
         app:layout_constraintVertical_bias="1.0" />
 
     <RadioButton
         android:id="@+id/radioButtonW"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:text="@string/woman"
         app:layout_constraintBottom_toBottomOf="@+id/radioButtonM"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/radioButtonM"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="386dp" />
 
     <RadioButton
         android:id="@+id/radioButtonM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="16dp"
         android:text="@string/man"
-        app:layout_constraintBottom_toBottomOf="@+id/sexText"
+        app:layout_constraintBottom_toBottomOf="@+id/genderText"
         app:layout_constraintEnd_toStartOf="@+id/radioButtonW"
-        app:layout_constraintStart_toEndOf="@+id/sexText"
-        app:layout_constraintTop_toTopOf="@+id/sexText" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/genderText"
+        app:layout_constraintTop_toTopOf="@+id/genderText"
+        app:layout_constraintVertical_bias="0.68" />
 
     <TextView
         android:id="@+id/dateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:contentDescription="@string/placeholder"
         android:text="@string/date"
         app:layout_constraintStart_toEndOf="@+id/calendarPic"
@@ -107,14 +109,16 @@
 
     <EditText
         android:id="@+id/datePlace"
-        android:layout_width="246dp"
-        android:layout_height="58dp"
-        android:inputType="date"
+        android:layout_width="208dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="8dp"
         android:hint="@string/date_info"
+        android:inputType="date"
         android:lines="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/calendarPic"
-        app:layout_constraintTop_toBottomOf="@+id/btnChange" />
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toEndOf="@+id/dateText"
+        app:layout_constraintTop_toBottomOf="@+id/radioButtonM" />
 
     <Button
         android:id="@+id/btnChange"
@@ -124,20 +128,21 @@
         android:text="@string/change_date"
         app:layout_constraintBottom_toBottomOf="@+id/dateText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.68"
         app:layout_constraintStart_toEndOf="@+id/dateText"
         app:layout_constraintTop_toTopOf="@+id/dateText"
-        app:layout_constraintVertical_bias="0.777" />
+        app:layout_constraintVertical_bias="0.622" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/listaBox"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="280dp"
-        android:layout_height="70dp"
-        app:layout_constraintBottom_toBottomOf="@+id/capPic"
+        android:layout_width="259dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toEndOf="@+id/capPic"
-        app:layout_constraintTop_toTopOf="@+id/capPic">
+        app:layout_constraintTop_toBottomOf="@+id/datePlace">
 
         <AutoCompleteTextView
             android:id="@+id/lista"
@@ -152,7 +157,8 @@
         android:id="@+id/namePic"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:contentDescription="@string/placeholder"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/nameContainer"
@@ -163,22 +169,24 @@
         android:id="@+id/lastNPic"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:contentDescription="@string/placeholder"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toEndOf="@+id/nameContainer"
         app:layout_constraintTop_toTopOf="@+id/lastNameContainer"
         app:srcCompat="@drawable/baseline_person_add_alt_1_24"
         app:tint="@color/md_theme_light_outline" />
 
     <ImageView
-        android:id="@+id/sexPic"
+        android:id="@+id/genderPic"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginStart="132dp"
         android:contentDescription="@string/placeholder"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/lastNPic"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.431"
         app:srcCompat="@drawable/baseline_people_24"
         app:tint="@color/md_theme_light_outline" />
 
@@ -186,13 +194,13 @@
         android:id="@+id/calendarPic"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/placeholder"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/sexPic"
+        app:layout_constraintTop_toBottomOf="@+id/genderPic"
         app:srcCompat="@drawable/baseline_calendar_month_24"
-        app:tint="@color/md_theme_light_outline"/>
+        app:tint="@color/md_theme_light_outline" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -201,25 +209,25 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="16dp" />
 
+
     <ImageView
         android:id="@+id/capPic"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="20dp"
         android:contentDescription="@string/placeholder"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/calendarPic"
         app:srcCompat="@drawable/baseline_school_24"
         app:tint="@color/md_theme_light_outline" />
 
-
     <Button
         android:id="@+id/NextBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="6dp"
         android:onClick="sendMessage"
         android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
