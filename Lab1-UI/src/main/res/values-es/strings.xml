@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="personal_info">Informacion Personal</string>
+    <string name="personal_info">Información Personal</string>
     <string name="name_hint">Nombre*</string>
     <string name="last_name_hint">Apellidos*</string>
     <string name="gender">Sexo</string>
     <string name="man">Hombre</string>
     <string name="woman">Mujer</string>
-    <string name="date">Fecha de nacimiento</string>
     <string name="change_date">Cambiar</string>
     <string name="placeholder">Contenedor</string>
-    <string name="date_info">Info*</string>
     <string name="scholarly_level">Grado de escolaridad</string>
     <string name="next">Siguiente</string>
     <string name="required">*requerido</string>
@@ -24,16 +22,21 @@
     <string name="phone">Teléfono</string>
     <string name="form_submitted">Formulario enviado</string>
     <string name="okay">Aceptar</string>
-    <string name="invalid_form">Formulario invalido</string>
+    <string name="invalid_form">Formulario inválido</string>
     <string name="contact_information">Información de contacto</string>
     <string name="must_be_a_number">Debe ser un número teléfonico</string>
     <string name="must_be_between_4_and_12_digits">Debe tener entre 4 y 12 dígitos</string>
-    <string name="must_be_a_valid_email">Debe ser un correo valido</string>
-    <string name="birth_date">Birth date</string>
+    <string name="must_be_a_valid_email">Debe ser un correo válido</string>
+    <string name="birth_date">Fecha Nacimiento</string>
     <string-array name="school_grade">
         <item>Primaria</item>
         <item>Secundaria</item>
         <item>Universitario</item>
         <item>Otro</item>
     </string-array>
+    <string name="birthday_hint">Fecha Nacimiento*</string>
+    <string name="select_date">Seleccione fecha</string>
+    <string name="invalid_date">Fecha no válida</string>
+    <string name="name">Nombre</string>
+    <string name="last_name">Apellido</string>
 </resources>

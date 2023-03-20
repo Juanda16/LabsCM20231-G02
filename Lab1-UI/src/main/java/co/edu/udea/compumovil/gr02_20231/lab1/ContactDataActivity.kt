@@ -123,7 +123,7 @@ class ContactDataActivity : AppCompatActivity() {
         message += "\n${getString(R.string.birth_date)}: ${person?.birthday}"
         if (person?.educationLevel != null)
             message += "\n${getString(R.string.scholarly_level)}: ${person?.educationLevel}"
-        message += "${getString(R.string.phone)}: ${binding.phoneEditText.text}"
+        message += "\n${getString(R.string.phone)}: ${binding.phoneEditText.text}"
         message += "\n${getString(R.string.email)}: ${binding.emailEditText.text}"
         message += "\n${getString(R.string.country)}: ${binding.countryEditText.text}"
         if (binding.cityEditText.text.isNotEmpty())
@@ -147,14 +147,6 @@ class ContactDataActivity : AppCompatActivity() {
 
     @SuppressLint("SuspiciousIndentation")
     private fun showLog() {
-/*
-        Log.d("personInfo", "Personal information:")
-        Log.d("personInfo", "Full name: ${binding.fullNameEditText.text}")
-        Log.d("personInfo", "Gender: ${binding.genderEditText.text}")
-        Log.d("personInfo", "Birthdate: ${binding.birthdateEditText.text}")
-        Log.d("personInfo", "School level: ${binding.schoolLevelEditText.text}")
-
-*/
 
         Log.d("contactInfo", "${getString(R.string.contact_information)}:")
         Log.d("contactInfo", "${getString(R.string.phone)}: ${binding.phoneEditText.text}")
@@ -268,7 +260,7 @@ class ContactDataActivity : AppCompatActivity() {
 
     private fun createCoroutine(countryCode: String) {
         lifecycleScope.launch(Dispatchers.IO) {
-            val cities2 = getCitiesByCountry("colombia").data
+            val cities2 = getCitiesByCountry(countryCode).data
             cities.clear()
             cities.addAll(cities2)
 

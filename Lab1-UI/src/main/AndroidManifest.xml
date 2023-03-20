@@ -21,7 +21,7 @@
             />
         <activity
             android:name=".PersonalDataActivity"
-            android:parentActivityName=".MainActivity"
+            android:label="@string/personal_info"
             android:exported="false"
             android:windowSoftInputMode="adjustPan"
             />

@@ -5,149 +5,98 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".PersonalDataActivity">
-
-    <TextView
-        android:id="@+id/general_title"
-        android:layout_width="191dp"
-        android:layout_height="29dp"
-        android:text="@string/personal_info"
-        android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.585"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="-6dp" />
+    tools:context=".PersonalDataActivity"
+    tools:layout_editor_absoluteY="89dp">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameContainer"
-        android:layout_width="261dp"
-        android:layout_height="79dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
         app:helperText="@string/required"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toEndOf="@+id/namePic"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:ems="10"
             android:hint="@string/name_hint"
             android:imeOptions="actionNext"
-            android:inputType="textPersonName|textCapSentences|textNoSuggestions"
+            android:inputType="textPersonName|textCapWords|textNoSuggestions"
             android:lines="1"
-            android:maxLength="20"
-            tools:layout_editor_absoluteY="5dp" />
+            android:maxLength="20" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/lastNameContainer"
-        android:layout_width="267dp"
+        android:layout_width="250dp"
         android:layout_height="79dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
         app:helperText="@string/required"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nameContainer">
+        app:layout_constraintStart_toEndOf="@+id/nameContainer"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/LastName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:hint="@string/last_name_hint"
             android:imeOptions="actionNext"
-            android:inputType="textPersonName|textCapSentences|textNoSuggestions"
+            android:inputType="textPersonName|textCapWords|textNoSuggestions"
             android:lines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/genderText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="@string/gender"
-        app:layout_constraintBottom_toBottomOf="@+id/genderPic"
-        app:layout_constraintStart_toEndOf="@+id/genderPic"
-        app:layout_constraintTop_toTopOf="@+id/genderPic"
-        app:layout_constraintVertical_bias="1.0" />
 
-    <RadioButton
-        android:id="@+id/radioButtonW"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:text="@string/woman"
-        app:layout_constraintBottom_toBottomOf="@+id/radioButtonM"
-        app:layout_constraintTop_toTopOf="@+id/radioButtonM"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="386dp" />
-
-    <RadioButton
-        android:id="@+id/radioButtonM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/man"
-        app:layout_constraintBottom_toBottomOf="@+id/genderText"
-        app:layout_constraintEnd_toStartOf="@+id/radioButtonW"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/genderText"
-        app:layout_constraintTop_toTopOf="@+id/genderText"
-        app:layout_constraintVertical_bias="0.68" />
-
-    <TextView
-        android:id="@+id/dateText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:contentDescription="@string/placeholder"
-        android:text="@string/date"
-        app:layout_constraintStart_toEndOf="@+id/calendarPic"
-        app:layout_constraintTop_toTopOf="@+id/calendarPic" />
-
-    <EditText
-        android:id="@+id/datePlace"
-        android:layout_width="208dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/date_info"
-        android:inputType="date"
-        android:lines="1"
+        android:onClick="onRadioButtonClicked"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.066"
-        app:layout_constraintStart_toEndOf="@+id/dateText"
-        app:layout_constraintTop_toBottomOf="@+id/radioButtonM" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameContainer">
 
-    <Button
-        android:id="@+id/btnChange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/change_date"
-        app:layout_constraintBottom_toBottomOf="@+id/dateText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.68"
-        app:layout_constraintStart_toEndOf="@+id/dateText"
-        app:layout_constraintTop_toTopOf="@+id/dateText"
-        app:layout_constraintVertical_bias="0.622" />
+        <TextView
+            android:id="@+id/genderText"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:text="@string/gender" />
+
+        <RadioButton
+            android:id="@+id/radioButtonM"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:text="@string/man" />
+
+        <RadioButton
+            android:id="@+id/radioButtonW"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:text="@string/woman" />
+
+    </RadioGroup>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/listaBox"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="259dp"
-        android:layout_height="55dp"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
-        app:layout_constraintStart_toEndOf="@+id/capPic"
-        app:layout_constraintTop_toBottomOf="@+id/datePlace">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/birthdayContainer">
 
         <AutoCompleteTextView
             android:id="@+id/lista"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:inputType="none"
             android:text="@string/scholarly_level" />
@@ -157,10 +106,9 @@
         android:id="@+id/namePic"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/placeholder"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/nameContainer"
         app:layout_constraintTop_toTopOf="@+id/nameContainer"
         app:srcCompat="@drawable/baseline_person_24"
         app:tint="@color/md_theme_light_outline" />
@@ -169,10 +117,9 @@
         android:id="@+id/lastNPic"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/placeholder"
-        app:layout_constraintStart_toEndOf="@+id/nameContainer"
+        app:layout_constraintEnd_toStartOf="@+id/lastNameContainer"
         app:layout_constraintTop_toTopOf="@+id/lastNameContainer"
         app:srcCompat="@drawable/baseline_person_add_alt_1_24"
         app:tint="@color/md_theme_light_outline" />
@@ -181,12 +128,10 @@
         android:id="@+id/genderPic"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="132dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/placeholder"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.431"
+        app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup"
         app:srcCompat="@drawable/baseline_people_24"
         app:tint="@color/md_theme_light_outline" />
 
@@ -194,40 +139,57 @@
         android:id="@+id/calendarPic"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/placeholder"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/genderPic"
+        app:layout_constraintEnd_toStartOf="@+id/birthdayContainer"
+        app:layout_constraintTop_toTopOf="@+id/birthdayContainer"
         app:srcCompat="@drawable/baseline_calendar_month_24"
         app:tint="@color/md_theme_light_outline" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/birthdayContainer"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp" />
+        android:layout_marginTop="8dp"
+        app:helperText="@string/required"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/birthdayEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:cursorVisible="false"
+            android:drawableEnd="@drawable/outline_calendar_today_24"
+            android:drawablePadding="8dp"
+            android:drawableTint="?attr/colorAccent"
+            android:focusable="false"
+            android:focusableInTouchMode="true"
+            android:hint="@string/birthday_hint"
+            android:inputType="none"
+            android:lines="1"
+            android:maxLength="20" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
         android:id="@+id/capPic"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/placeholder"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/calendarPic"
+        app:layout_constraintEnd_toStartOf="@+id/listaBox"
+        app:layout_constraintTop_toTopOf="@+id/listaBox"
         app:srcCompat="@drawable/baseline_school_24"
         app:tint="@color/md_theme_light_outline" />
+
 
     <Button
         android:id="@+id/NextBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:onClick="sendMessage"
         android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
