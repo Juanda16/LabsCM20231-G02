@@ -33,6 +33,8 @@
     <string name="birthday_hint">Birthday*</string>
     <string name="select_date">Select date</string>
     <string name="invalid_date">Invalid date</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last Name</string>
     <string-array name="school_grade">
         <item>Primary</item>
         <item>Secondary</item>

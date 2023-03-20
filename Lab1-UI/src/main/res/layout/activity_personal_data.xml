@@ -26,38 +26,44 @@
         android:layout_marginEnd="8dp"
         app:helperText="@string/required"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/name_hint"
             android:ems="10"
-            android:inputType="textPersonName|textCapSentences|textNoSuggestions"
             android:hint="@string/name_hint"
             android:imeOptions="actionNext"
+            android:inputType="textPersonName|textCapWords|textNoSuggestions"
             android:lines="1"
-            android:maxLength="20"/>
+            android:maxLength="20" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/lastNameContainer"
-        android:layout_width="267dp"
+        android:layout_width="270dp"
         android:layout_height="79dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="8dp"
         app:helperText="@string/required"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/nameContainer">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/LastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/last_name_hint"
             android:imeOptions="actionNext"
-            android:inputType="textPersonName|textCapSentences|textNoSuggestions"
-            android:lines="1" />
+            android:inputType="textPersonName|textCapWords|textNoSuggestions"
+            android:lines="1"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -105,48 +111,15 @@
 
     </RadioGroup>
 
-    <TextView
-        android:id="@+id/dateText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
-        android:contentDescription="@string/placeholder"
-        android:text="@string/date"
-        app:layout_constraintStart_toEndOf="@+id/calendarPic"
-        app:layout_constraintTop_toTopOf="@+id/calendarPic" />
-
-    <EditText
-        android:id="@+id/datePlace"
-        android:layout_width="246dp"
-        android:layout_height="58dp"
-        android:inputType="date"
-        android:hint="@string/date_info"
-        android:lines="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/calendarPic"
-        app:layout_constraintTop_toBottomOf="@+id/btnChange" />
-
-    <Button
-        android:id="@+id/btnChange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/change_date"
-        app:layout_constraintBottom_toBottomOf="@+id/dateText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/dateText"
-        app:layout_constraintTop_toTopOf="@+id/dateText"
-        app:layout_constraintVertical_bias="0.777" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/listaBox"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="280dp"
+        android:layout_width="270dp"
         android:layout_height="70dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/capPic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/capPic"
         app:layout_constraintTop_toTopOf="@+id/capPic">
 
@@ -204,6 +177,35 @@
         app:layout_constraintTop_toBottomOf="@+id/genderPic"
         app:srcCompat="@drawable/baseline_calendar_month_24"
         app:tint="@color/md_theme_light_outline"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/birthdayContainer"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="8dp"
+        app:helperText="@string/required"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/genderPic">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/birthdayEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cursorVisible="false"
+            android:drawableEnd="@drawable/outline_calendar_today_24"
+            android:drawablePadding="8dp"
+            android:drawableTint="?attr/colorAccent"
+            android:focusable="false"
+            android:focusableInTouchMode="true"
+            android:hint="@string/birthday_hint"
+            android:inputType="none"
+            android:lines="1"
+            android:maxLength="20" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
