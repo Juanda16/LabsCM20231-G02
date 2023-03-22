@@ -9,6 +9,7 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
+import co.edu.udea.compumovil.gr02_20231.lab1.constants.Constants
 import co.edu.udea.compumovil.gr02_20231.lab1.databinding.ActivityContactDataBinding
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
@@ -23,35 +24,11 @@ import co.edu.udea.compumovil.gr02_20231.lab1.model.Person
 
 class ContactDataActivity : AppCompatActivity() {
 
-    private val cities = mutableListOf(
+    private var cities = listOf(
         "Bogotá",
         "Medellín",
-
-        )
-
-    private val countries = listOf(
-        "Argentina",
-        "Bolivia",
-        "Brasil",
-        "Chile",
-        "Colombia",
-        "Costa Rica",
-        "Cuba",
-        "Ecuador",
-        "El Salvador",
-        "Guatemala",
-        "Honduras",
-        "México",
-        "Nicaragua",
-        "Panamá",
-        "Paraguay",
-        "Perú",
-        "Puerto Rico",
-        "República Dominicana",
-        "Uruguay",
-        "Venezuela"
     )
-
+    private val countries = Constants.countries
     private lateinit var adapterCity: ArrayAdapter<String>
     private lateinit var adapterCountry: ArrayAdapter<String>
 
@@ -70,13 +47,6 @@ class ContactDataActivity : AppCompatActivity() {
             com.google.android.material.R.layout.support_simple_spinner_dropdown_item,
             countries
         )
-
-        adapterCity = ArrayAdapter(
-            this,
-            com.google.android.material.R.layout.support_simple_spinner_dropdown_item,
-            cities
-        )
-
         setContentView(binding.root)
 
         person = intent.getSerializableExtra("Person") as Person?
@@ -85,12 +55,13 @@ class ContactDataActivity : AppCompatActivity() {
         emailFocusListener()
         countryFocusListener()
 
-        binding.countryEditText.setOnItemClickListener { parent, view, position, id ->
-            val selectedItem = adapterCountry.getItem(position)
-            // Perform action with the selected item
-            Log.d("Test 2", ">>$selectedItem")
-            createCoroutine(selectedItem ?: "colombia")
-        }
+
+        adapterCity = ArrayAdapter(
+            this,
+            com.google.android.material.R.layout.support_simple_spinner_dropdown_item,
+            cities
+        )
+
         binding.cityEditText.setAdapter(adapterCity)
         binding.submitButton.setOnClickListener { submitForm() }
 
@@ -235,11 +206,6 @@ class ContactDataActivity : AppCompatActivity() {
         if (countryText.isEmpty()) {
             return getString(R.string.required)
         }
-        if (binding.countryEditText.text.toString().lowercase() == "colombia") {
-            //TODO get cities from API https://countriesnow.space/
-
-
-        }
         return null
     }
 
@@ -247,25 +213,29 @@ class ContactDataActivity : AppCompatActivity() {
         //Autocomplete countries
         //Example TODO get from API https://countriesnow.space/
 
-
         binding.countryEditText.setAdapter(adapterCountry)
 
 
         binding.countryEditText.setOnFocusChangeListener { _, focused ->
             if (!focused) {
                 binding.countryContainer.error = validateCountry()
+                val countryText = binding.countryEditText.text.toString()
+                Log.d("country", countryText)
+                createCoroutine(countryText ?: "colombia")
             }
         }
     }
 
     private fun createCoroutine(countryCode: String) {
         lifecycleScope.launch(Dispatchers.IO) {
-            val cities2 = getCitiesByCountry(countryCode).data
-            cities.clear()
-            cities.addAll(cities2)
-
+            cities = getCitiesByCountry(countryCode).data
             withContext(Dispatchers.Main) {
-                adapterCity.notifyDataSetChanged()
+                adapterCity = ArrayAdapter(
+                    this@ContactDataActivity,
+                    android.R.layout.simple_list_item_1,
+                    cities
+                )
+                binding.cityEditText.setAdapter(adapterCity)
             }
         }
     }
